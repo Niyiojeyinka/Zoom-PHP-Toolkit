@@ -26,4 +26,21 @@ class Meeting
             exit();
         }
     }
+
+    public function create($meetingDetails)
+    {
+        $response = $client->doRequest(
+            'POST',
+            '/users/{userId}/meetings',
+            [],
+            ['userId' => $this->getUserId()],
+            json_encode($meetingDetails)
+        );
+
+        if ($client->responseCode() == 201) {
+            return $response;
+        } else {
+            return false;
+        }
+    }
 }
