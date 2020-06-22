@@ -12,14 +12,14 @@ class Meeting
 
     public function getUserId()
     {
-        $response = $client->doRequest(
+        $response = $this->client->doRequest(
             'GET',
             '/users/{userId}',
             [],
             ['userId' => Config::$email]
         );
 
-        if ($client->responseCode() == 200) {
+        if ($this->client->responseCode() == 200) {
             return $response['id'];
         } else {
             print_r($response);
@@ -29,7 +29,7 @@ class Meeting
 
     public function create($meetingDetails)
     {
-        $response = $client->doRequest(
+        $response = $this->client->doRequest(
             'POST',
             '/users/{userId}/meetings',
             [],
@@ -37,7 +37,7 @@ class Meeting
             json_encode($meetingDetails)
         );
 
-        if ($client->responseCode() == 201) {
+        if ($this->client->responseCode() == 201) {
             return $response;
         } else {
             return false;
@@ -46,7 +46,7 @@ class Meeting
 
     public function update($meetingDetails, $meetingId)
     {
-        $response = $client->doRequest(
+        $response = $this->client->doRequest(
             'PATCH',
             '/meetings/{meetingId}',
             [],
@@ -54,7 +54,7 @@ class Meeting
             json_encode($meetingDetails)
         );
 
-        if ($client->responseCode() == 201) {
+        if ($this->client->responseCode() == 201) {
             return $response;
         } else {
             return false;
@@ -63,7 +63,7 @@ class Meeting
 
     public function delete($meetingId)
     {
-        $response = $client->doRequest(
+        $response = $this->client->doRequest(
             'DELETE',
             '/meetings/{meetingId}',
             [],
@@ -71,7 +71,7 @@ class Meeting
             json_encode($meetingDetails)
         );
 
-        if ($client->responseCode() == 201) {
+        if ($this->client->responseCode() == 201) {
             return $response;
         } else {
             return false;
