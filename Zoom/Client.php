@@ -12,8 +12,8 @@ class Client
 
     public function __construct($options = [])
     {
-        $this->apiKey = Config::api_key;
-        $this->apiSecret = Config::secret_key;
+        $this->apiKey = Config::$api_key;
+        $this->apiSecret = Config::$secret_key;
         $this->baseUrl = 'https://api.zoom.us/v2';
         $this->timeout = 30;
 
