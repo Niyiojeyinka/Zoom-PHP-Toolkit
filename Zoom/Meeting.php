@@ -43,4 +43,21 @@ class Meeting
             return false;
         }
     }
+
+    public function update($meetingDetails, $meetingId)
+    {
+        $response = $client->doRequest(
+            'PATCH',
+            '/meetings/{meetingId}',
+            [],
+            ['userId' => $meetingId],
+            json_encode($meetingDetails)
+        );
+
+        if ($client->responseCode() == 201) {
+            return $response;
+        } else {
+            return false;
+        }
+    }
 }
