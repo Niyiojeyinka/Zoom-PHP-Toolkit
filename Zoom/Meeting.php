@@ -5,6 +5,7 @@ use Zoom\Config;
 class Meeting
 {
     private $client;
+    public $zoomError;
     public function __construct()
     {
         $this->client = new Client();
@@ -40,6 +41,7 @@ class Meeting
         if ($this->client->responseCode() == 201) {
             return $response;
         } else {
+            $this->zoomError = $response;
             return false;
         }
     }
@@ -57,6 +59,8 @@ class Meeting
         if ($this->client->responseCode() == 201) {
             return $response;
         } else {
+            $this->zoomError = $response;
+
             return false;
         }
     }
@@ -74,6 +78,8 @@ class Meeting
         if ($this->client->responseCode() == 201) {
             return $response;
         } else {
+            $this->zoomError = $response;
+
             return false;
         }
     }
