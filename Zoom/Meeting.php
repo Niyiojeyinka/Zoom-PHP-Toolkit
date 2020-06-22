@@ -50,7 +50,7 @@ class Meeting
             'PATCH',
             '/meetings/{meetingId}',
             [],
-            ['userId' => $meetingId],
+            ['meetingId' => $meetingId],
             json_encode($meetingDetails)
         );
 
