@@ -60,4 +60,21 @@ class Meeting
             return false;
         }
     }
+
+    public function delete($meetingId)
+    {
+        $response = $client->doRequest(
+            'DELETE',
+            '/meetings/{meetingId}',
+            [],
+            ['meetingId' => $meetingId],
+            json_encode($meetingDetails)
+        );
+
+        if ($client->responseCode() == 201) {
+            return $response;
+        } else {
+            return false;
+        }
+    }
 }
