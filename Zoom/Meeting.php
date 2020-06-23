@@ -94,7 +94,7 @@ class Meeting
             json_encode(['action' => 'end'])
         );
 
-        if ($this->client->responseCode() == 201) {
+        if ($this->client->responseCode() == 204) {
             return $response;
         } else {
             $this->zoomError = $response;
