@@ -83,4 +83,23 @@ class Meeting
             return false;
         }
     }
+
+    public function end($meetingId)
+    {
+        $response = $this->client->doRequest(
+            'PUT',
+            '/meetings/{meetingId}/status',
+            [],
+            ['meetingId' => $meetingId],
+            json_encode(['action' => 'end'])
+        );
+
+        if ($this->client->responseCode() == 201) {
+            return $response;
+        } else {
+            $this->zoomError = $response;
+
+            return false;
+        }
+    }
 }
